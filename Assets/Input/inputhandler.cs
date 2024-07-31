@@ -8,9 +8,7 @@ public class InputHandlerScript : MonoBehaviour
 
     private Camera _mainCamera;
 
-
-
-     void Awake()
+    void Awake()
     {
         _mainCamera = Camera.main;
     }
@@ -25,14 +23,11 @@ public class InputHandlerScript : MonoBehaviour
 
         var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
         if (!rayHit.collider) return;
-        else{
-            DataLoggerScript.finaltime = DataLoggerScript.time;
-            DataLoggerScript.time = 0;
-            ColorChangingScript.changeColor(rayHit.collider.gameObject);
+
+        DataLoggerScript.finaltime = DataLoggerScript.time;
+        DataLoggerScript.time = 0;
+        ColorChangingScript.changeColor(rayHit.collider.gameObject);
         
-            Debug.Log(rayHit.collider.gameObject.name);
-        }
-        
-        
+        Debug.Log(rayHit.collider.gameObject.name);
     }
 }
